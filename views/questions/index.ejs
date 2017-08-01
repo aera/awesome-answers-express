@@ -5,7 +5,7 @@
 <div class="questions-list">
   <% for (let question of questions) { %>
     <div class="question-summary">
-      <a href><%= question.title %></a>
+      <a href="/questions/<%= question.id %>"><%= question.title %></a>
     </div>
   <% } %>
 </div>

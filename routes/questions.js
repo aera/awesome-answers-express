@@ -15,4 +15,19 @@ router.get('/', function(req, res, next) {
     })
 });
 
+// questions#show PATH: /questions/:id METHOD: GET
+router.get('/:id', (req, res, next) => {
+  // To get params from Express, use req.params. It's a property
+  // of the request object. It doesn't contain form data. It only
+  // has params related to the path such as `id`, `question_id`, etc.
+  const {id} = req.params;
+  Question
+    .findById(id)
+    .then(question => {
+      res.render('questions/show', {question});
+    })
+    .catch(next)
+    //.catch(error => next(error))
+});
+
 module.exports = router;
