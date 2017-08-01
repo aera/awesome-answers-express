@@ -1,23 +1,20 @@
 {
   "development": {
-    "username": "root",
-    "password": null,
-    "database": "database_development",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "username": "allain",
+    "password": "12345",
+    "database": "aae_dev",
+    "dialect": "postgres"
   },
   "test": {
-    "username": "root",
+    "username": "allain",
     "password": null,
-    "database": "database_test",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "database": "aae_test",
+    "dialect": "postgres"
   },
   "production": {
-    "username": "root",
+    "username": "allain",
     "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "database": "aae_prod",
+    "dialect": "postgres"
   }
 }

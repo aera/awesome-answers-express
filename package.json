@@ -4,22 +4,25 @@
   "private": true,
   "scripts": {
     "start": "nodemon ./bin/www",
-    "debug": "nodemon --inspect ./bin/www"
+    "debug": "nodemon --inspect ./bin/www",
+    "db:create": "createdb --echo aae_dev",
+    "db:drop": "dropdb --if-exists --echo aae_dev"
   },
   "dependencies": {
-    "body-parser": "~1.17.1",
+    "body-parser": "~1.16.0",
     "cookie-parser": "~1.4.3",
-    "debug": "~2.6.3",
-    "ejs": "~2.5.6",
-    "express": "~4.15.2",
-    "morgan": "~1.8.1",
+    "debug": "~2.6.0",
+    "ejs": "~2.5.5",
+    "express": "~4.14.1",
+    "morgan": "~1.7.0",
     "node-sass-middleware": "0.9.8",
     "pg": "^7.0.2",
     "pg-hstore": "^2.3.2",
     "sequelize": "^4.4.2",
-    "serve-favicon": "~2.4.2"
+    "serve-favicon": "~2.3.2"
   },
   "devDependencies": {
+    "faker": "^4.1.0",
     "nodemon": "^1.11.0"
   }
 }
