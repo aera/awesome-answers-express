@@ -1,0 +1,13 @@
+<%- include('../partials/header') %>
+
+<h1>Questions</h1>
+
+<div class="questions-list">
+  <% for (let question of questions) { %>
+    <div class="question-summary">
+      <a href><%= question.title %></a>
+    </div>
+  <% } %>
+</div>
+
+<%- include('../partials/footer') %>
