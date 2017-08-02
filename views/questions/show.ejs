@@ -6,4 +6,22 @@
 <p><strong>Created At:</strong> <%= question.createdAt %></p>
 <p><strong>Updated At:</strong> <%= question.updatedAt %></p>
 
+<h2>Answers</h2>
+
+<form action="/questions/<%= question.id %>/answers" method="post">
+  <div>
+    <textarea name="content" rows="8" cols="80"></textarea>
+  </div>
+  <input type="submit" value="Submit" />
+</form>
+
+<ul class="answers-list">
+  <% answers.forEach(answer => { %>
+    <li>
+      <p><%= answer.content %></p>
+      <p><strong>Last Edited:</strong> <%= answer.updatedAt %></p>
+    </li>
+  <% }) %>
+</ul>
+
 <%- include('../partials/footer') %>
