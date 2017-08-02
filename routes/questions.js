@@ -7,7 +7,7 @@ const answers = require('./answers');
 router.get('/', function(req, res, next) {
   Question
     .all({order: [['createdAt', 'DESC'], ['title', 'ASC']]})
-    //SELECT * FROM "Questions" ORDER BY "createdAt" DESC, "title" ASC
+    // SELECT * FROM "Questions" ORDER BY "createdAt" DESC, "title" ASC;
     .then(questions => {
       // To pass a variable to a template, pass
       // an object as a second argument to res.render.
@@ -54,6 +54,16 @@ router.get('/:id', (req, res, next) => {
     // .catch(error => next(error))
     // ð ð are equivalent
     .catch(next)
+})
+
+// questions#destroy
+router.delete('/:id', (req, res, next) => {
+  const {id} = req.params;
+  Question
+    .findById(id)
+    .then(question => question.destroy())
+    .then(() => res.redirect(`/questions`))
+    .catch(next);
 })
 
 // PATH: /questions/:questionId/answers

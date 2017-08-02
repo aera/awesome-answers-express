@@ -4,7 +4,8 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-const nodeSass = require('node-sass-middleware')
+const nodeSass = require('node-sass-middleware');
+const methodOverride = require('method-override');
 
 const index = require('./routes/index');
 const questions = require('./routes/questions');
@@ -20,6 +21,15 @@ app.set('view engine', 'ejs');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(methodOverride((req, res) => {
+  if (req.body && typeof req.body === 'object' && '_method' in req.body) {
+    const method = req.body._method;
+    delete req.body._method;
+    // Whatever is returned from this callback will be used
+    // by methodOverride to replace the request's HTTP verb.
+    return method;
+  }
+}))
 app.use(cookieParser());
 app.use(nodeSass({
   src: path.join(__dirname, 'public'),

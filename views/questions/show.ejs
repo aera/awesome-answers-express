@@ -6,6 +6,11 @@
 <p><strong>Created At:</strong> <%= question.createdAt %></p>
 <p><strong>Updated At:</strong> <%= question.updatedAt %></p>
 
+<form action="/questions/<%= question.id %>" method="post">
+  <input type="hidden" name="_method" value="DELETE" />
+  <input type="submit" value="Delete" />
+</form>
+
 <h2>Answers</h2>
 
 <form action="/questions/<%= question.id %>/answers" method="post">
