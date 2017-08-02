@@ -15,6 +15,23 @@ router.get('/', function(req, res, next) {
     })
 });
 
+// questions#new PATH: /questions/new METHOD: GET
+router.get('/new', (req, res, next) => {
+  const question = Question.build();
+  res.render('questions/new', {question});
+});
+
+// questions#create PATH: /questions METHOD: POST
+router.post('/', (req, res, next) => {
+  const {title, content} = req.body;
+    Question
+      .create({title, content})
+      .then(question => {
+        res.redirect(`/questions/${question.id}`)
+      })
+      .catch(next);
+});
+
 // questions#show PATH: /questions/:id METHOD: GET
 router.get('/:id', (req, res, next) => {
   // To get params from Express, use req.params. It's a property
@@ -26,8 +43,9 @@ router.get('/:id', (req, res, next) => {
     .then(question => {
       res.render('questions/show', {question});
     })
+    // .catch(error => next(error))
+    // ð ð are equivalent
     .catch(next)
-    //.catch(error => next(error))
-});
+})
 
 module.exports = router;
